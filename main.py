@@ -23,8 +23,8 @@ def get_cert_expiry(domain):
         # Create SSL context with default settings
         context = ssl.create_default_context()
         
-        # Establish connection with 5-second timeout
-        with socket.create_connection((domain, 443), timeout=5) as sock:
+        # Establish connection with 15-second timeout
+        with socket.create_connection((domain, 443), timeout=15) as sock:
             with context.wrap_socket(sock, server_hostname=domain) as ssock:
                 # Get certificate information
                 cert = ssock.getpeercert()
@@ -64,7 +64,7 @@ def get_cert_expiry(domain):
         return {
             "domain": domain,
             "status": "error",
-            "reason": "Connection timeout after 5 seconds"
+            "reason": "Connection timeout after 15 seconds"
         }
         
     except socket.gaierror as e:
