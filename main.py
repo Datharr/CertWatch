@@ -20,7 +20,11 @@ def get_cert_expiry(domain):
                 days_remaining = (expiry - datetime.now(timezone.utc)).days
 
                 # Get issuer in readable format
-                issuer = ", ".join(f"{x[0]}={x[1]}" for x in cert.get("issuer", []))
+                issuer = ", ".join(
+                f"{item[0]}={item[1]}" 
+                for part in cert.get("issuer", []) 
+                for item in part if len(item) == 2
+            )
 
                 return {
                     "domain": domain,
