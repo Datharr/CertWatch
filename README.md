@@ -2,9 +2,6 @@ SSL Certificate Monitor
 Overview
 This repository contains a Flask-based web application designed to monitor SSL certificate expiry dates for domains. The application provides a simple API endpoint to check SSL certificate status, including expiry dates and days remaining until expiration.
 
-User Preferences
-Preferred communication style: Simple, everyday language.
-
 System Architecture
 Backend Architecture
 Framework: Flask (Python web framework)
